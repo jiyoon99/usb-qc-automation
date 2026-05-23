@@ -1,0 +1,17 @@
+# Runtime output
+*.log
+*.tmp
+usb_battery_report.html
+
+# Windows / editor
+Thumbs.db
+Desktop.ini
+.DS_Store
+.idea/
+.vscode/
+
+# Archives or generated packages
+*.zip
+*.7z
+*.exe
+*.msi
