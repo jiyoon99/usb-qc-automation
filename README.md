@@ -36,6 +36,12 @@ USB 인식, 시스템 도구 실행, C 드라이브 확장 상태, Bluetooth, �
 - 최종 리포트 화면
 - UEFI BIOS 재부팅 옵션 제공
 
+## Preview
+
+![USB QC terminal dashboard preview](docs/assets/usb-qc-dashboard-preview.svg)
+
+> 공개 저장소용 샘플 화면입니다. 실제 장비명, 점검 로그, 운영 식별 정보는 포함하지 않았습니다.
+
 ## Why I Built This
 
 장비 출고 전 검수에서는 USB 인식, 드라이브 상태, 배터리 상태, Bluetooth, 카메라, 사운드, 시스템 정보 확인을 반복적으로 수행해야 합니다. 이 스크립트는 여러 확인 절차를 한 터미널 흐름으로 묶어 작업자가 빠르게 점검하고 결과를 확인할 수 있도록 만들었습니다.

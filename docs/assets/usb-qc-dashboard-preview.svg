@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-label="USB QC terminal dashboard preview">
+  <rect width="1280" height="720" fill="#07130d"/>
+  <rect x="36" y="30" width="1208" height="660" fill="#0b1b12" stroke="#2fd36b" stroke-width="2"/>
+  <text x="64" y="68" font-family="Consolas, monospace" font-size="18" fill="#2fd36b">QC AUTOMATION :: QC TERMINAL</text>
+  <text x="64" y="104" font-family="Consolas, monospace" font-size="15" fill="#a6f4c5">+------------------------------------------------------------------------------------------------------------------------------+</text>
+  <text x="88" y="132" font-family="Consolas, monospace" font-size="16" fill="#ffffff">[ QC // LOCAL NODE OPS :: LIVE QC TRACE ]</text>
+  <g font-family="Consolas, monospace" font-size="15" fill="#a6f4c5">
+    <text x="88" y="164">TRACE-ID : HF-4281-7712                           CLOCK : 2026-05-23 14:33:10</text>
+    <text x="88" y="192">NODE     : SAMPLE-NOTEBOOK                         AUTH  : ADMIN</text>
+    <text x="88" y="220">CHANNEL  : USB&gt;SYS&gt;QC                              WINDOW: 136x38 / LIVE</text>
+  </g>
+  <text x="64" y="252" font-family="Consolas, monospace" font-size="15" fill="#a6f4c5">+------------------------------------------------------------------------------------------------------------------------------+</text>
+  <text x="88" y="280" font-family="Consolas, monospace" font-size="16" fill="#ffffff">[ LIVE TRACE BUFFER ]</text>
+  <g font-family="Consolas, monospace" font-size="15" fill="#a6f4c5">
+    <text x="88" y="312">CURRENT PHASE : FINAL REPORT</text>
+    <text x="88" y="340">DETAIL        : Final report locked</text>
+    <text x="88" y="368">LAST ACTION   : Operator reviewed hardware checklist</text>
+  </g>
+  <text x="64" y="400" font-family="Consolas, monospace" font-size="15" fill="#a6f4c5">+------------------------------------------------------------------------------------------------------------------------------+</text>
+  <text x="88" y="428" font-family="Consolas, monospace" font-size="16" fill="#ffffff">[ MODULE GRID ]</text>
+  <g font-family="Consolas, monospace" font-size="15">
+    <text x="88" y="460" fill="#ffffff">OVERALL   : CHECK REQUIRED                         ALERT     : CHECK ISSUES BELOW</text>
+    <text x="88" y="488" fill="#ffd666">ISSUES    : 1                                      USB       : NOT FOUND</text>
+    <text x="88" y="516" fill="#a6f4c5">SYS TOOLS : DONE                                   C DRIVE   : MAX SIZE</text>
+    <text x="88" y="544" fill="#a6f4c5">BLUETOOTH : OK                                     TIME SYNC : OK</text>
+    <text x="88" y="572" fill="#a6f4c5">CAMERA    : DONE                                   SOUND     : DONE</text>
+    <text x="88" y="600" fill="#a6f4c5">RAM       : 31 GB                                  BATTERY   : OK</text>
+    <text x="88" y="628" fill="#a6f4c5">CPU       : Intel Core i7                          GPU       : Intel Iris Xe</text>
+  </g>
+  <text x="770" y="104" font-family="Consolas, monospace" font-size="15" fill="#a6f4c5">+----------------------------------------------+</text>
+  <text x="798" y="132" font-family="Consolas, monospace" font-size="16" fill="#ffffff">[ POWER TELEMETRY ]</text>
+  <g font-family="Consolas, monospace" font-size="15" fill="#a6f4c5">
+    <text x="798" y="164">EFFICIENCY : 86%</text>
+    <text x="798" y="192">CYCLE      : 115</text>
+    <text x="798" y="220">LEVEL      : 99%</text>
+    <text x="798" y="248">CHARGE     : ON AC</text>
+  </g>
+  <text x="770" y="292" font-family="Consolas, monospace" font-size="15" fill="#a6f4c5">+----------------------------------------------+</text>
+  <text x="798" y="320" font-family="Consolas, monospace" font-size="16" fill="#ffffff">[ OPERATOR COMMAND ]</text>
+  <text x="798" y="352" font-family="Consolas, monospace" font-size="15" fill="#a6f4c5">[1] CLOSE TERMINAL</text>
+  <text x="798" y="380" font-family="Consolas, monospace" font-size="15" fill="#a6f4c5">[2] SHUTDOWN TO UEFI BIOS</text>
+  <text x="64" y="668" font-family="Consolas, monospace" font-size="16" fill="#2fd36b">QC&gt;</text>
+</svg>
