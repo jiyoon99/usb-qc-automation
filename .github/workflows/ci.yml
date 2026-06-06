@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  preview-smoke:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Run standard preview
+        shell: cmd
+        run: usb-qc-auto-check.bat --preview
+      - name: Run rental preview
+        shell: cmd
+        run: rental-usb-qc-auto-check.bat --preview
+      - name: Run final report previews
+        shell: cmd
+        run: |
+          usb-qc-auto-check.bat --preview-final
+          rental-usb-qc-auto-check.bat --preview-final

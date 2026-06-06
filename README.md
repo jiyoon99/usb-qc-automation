@@ -95,3 +95,7 @@ usb-qc-automation/
 - 스크립트 마지막에는 작업자 선택에 따라 `shutdown /r /fw /t 0` 명령으로 UEFI BIOS 재부팅을 실행할 수 있습니다.
 - 실제 장비에서 실행하기 전에 스크립트 내용을 확인해야 합니다.
 - 공개 저장소에는 비밀번호, API 토큰, 네트워크 공유 계정 정보, 운영 식별 문자열을 포함하지 않습니다.
+
+## License / 라이선스
+
+MIT License. 자세한 내용은 [LICENSE](LICENSE)를 참고하세요.
