@@ -1,101 +1,81 @@
 # USB QC Automation
 
-USB/하드웨어 출고 전 QC 체크리스트를 터미널 대시보드 흐름으로 정리한 Windows Batch 자동화 스크립트입니다.
-
-## Problem / 문제
-
-- 출고 전 QC에서 USB 인식, 드라이브 상태, 배터리, Bluetooth, 카메라, 사운드, 시스템 정보를 반복 확인해야 합니다.
-- 여러 Windows 도구를 따로 실행하면 점검 흐름이 끊기고 항목 누락이 생길 수 있습니다.
-- 일반 장비와 렌탈 장비의 점검 기준이 다릅니다.
-
-## Solution / 해결 방법
-
-- QC 확인 항목을 하나의 터미널 흐름으로 묶었습니다.
-- Batch에서 PowerShell 명령을 호출해 배터리와 시스템 정보를 확인합니다.
-- 일반 QC와 렌탈 QC 스크립트를 분리했습니다.
-- 최종 상태를 한 화면에서 확인할 수 있게 구성했습니다.
-
-## Tech Stack / 기술 스택
-
-| Area | Stack |
-| --- | --- |
-| Runtime | Batch |
-| System commands | PowerShell, Windows built-in tools |
-| UI | Terminal dashboard |
-| Platform | Windows |
-
-## Skills / 구현 역량
-
-- Windows Batch 자동화
-- Batch 안에서 PowerShell 명령 호출
-- Windows 장치/시스템 정보 확인
-- 터미널 기반 점검 흐름 구성
-- 장비 유형별 스크립트 분리
-- 공개용 저장소에서 운영 식별 정보 제거
-
-## Included Scripts / 포함 스크립트
-
-| Script | Purpose |
-| --- | --- |
-| `usb-qc-auto-check.bat` | 일반 QC 점검 |
-| `rental-usb-qc-auto-check.bat` | 렌탈 장비 QC 점검 |
-
-## Key Features / 주요 기능
-
-- USB 드라이브 탐지
-- Windows 시스템 도구 실행
-- C 드라이브 확장 상태 확인
-- Bluetooth 상태 확인
-- 배터리 상태, 효율, 사이클, 충전 상태 확인
-- 시간 동기화 확인
-- 카메라와 사운드 테스트 실행
-- RAM, CPU, GPU 정보 표시
-- 최종 리포트 화면
-- UEFI BIOS 재부팅 옵션
-
-## Preview / 미리보기
+Windows 장비 출고 전 USB, 저장장치, 시스템 사양, Bluetooth, 배터리, 카메라 상태를 순서대로 확인하는 Batch 기반 QC 터미널 대시보드입니다.
 
 ![USB QC terminal dashboard preview](docs/assets/usb-qc-dashboard-preview.svg)
 
-공개 저장소용 샘플 화면입니다. 실제 장비명, 점검 로그, 운영 식별 정보는 포함하지 않았습니다.
+## What I Built / 만든 것
+
+여러 Windows 도구와 명령을 따로 실행하던 출고 검수 절차를 하나의 스크립트 흐름으로 묶었습니다. 일반 장비와 렌탈 장비의 절차를 분리하고, 각 단계의 진행 상태와 최종 결과를 터미널 대시보드에 표시합니다.
+
+## Main Features / 주요 기능
+
+- 이동식 드라이브에서 USB 점검 도구 폴더 탐색
+- PCI, ACPI, USB, 저장장치 정보 수집
+- CPU, RAM, GPU 정보 표시
+- C 드라이브 확장 가능 여부 확인 및 선택적 확장
+- Bluetooth PnP 장치 상태 확인
+- `powercfg /batteryreport` 기반 배터리 효율·사이클·충전 상태 분석
+- Windows 카메라 앱과 시스템 점검 도구 실행
+- 단계별 상태, 최근 동작, 문제 개수를 대시보드에 표시
+- 일반 QC와 렌탈 QC 스크립트 분리
+- 검수 종료 후 선택적으로 UEFI BIOS 재부팅
+
+## Development / 개발 방식
+
+Batch가 전체 작업 순서와 화면을 담당하고, 구조화된 시스템 조회는 PowerShell을 호출해 처리합니다.
+
+```text
+Batch workflow and dashboard
+        ↓
+PowerShell WMI/CIM/PnP queries
+        ↓
+normalized result variables
+        ↓
+stage status and issue count
+        ↓
+final QC summary
+```
+
+- 반복되는 프레임, 상태 라인, 대시보드 렌더링을 Batch subroutine으로 분리했습니다.
+- PowerShell 조회가 실패해도 `UNKNOWN` 또는 실패 상태로 변환해 다음 검사를 계속합니다.
+- 장비 유형별 차이는 두 실행 파일로 분리해 검수 순서를 명확하게 유지했습니다.
+- `--preview`, `--preview-final` 옵션으로 실제 검사를 수행하지 않고 화면을 확인할 수 있습니다.
+
+## Included Scripts / 포함 스크립트
+
+| 파일 | 역할 |
+| --- | --- |
+| `usb-qc-auto-check.bat` | 일반 출고 QC |
+| `rental-usb-qc-auto-check.bat` | 렌탈 장비 QC |
 
 ## Run / 실행
 
-일반 QC:
-
 ```bat
 usb-qc-auto-check.bat
-```
-
-렌탈 QC:
-
-```bat
 rental-usb-qc-auto-check.bat
 ```
 
-미리보기:
+화면 미리보기:
 
 ```bat
 usb-qc-auto-check.bat --preview
 usb-qc-auto-check.bat --preview-final
 ```
 
-## Project Structure / 프로젝트 구조
+## Tech Stack / 기술 스택
 
-```text
-usb-qc-automation/
-├── usb-qc-auto-check.bat
-├── rental-usb-qc-auto-check.bat
-├── README.md
-└── .gitignore
-```
+| 영역 | 기술 |
+| --- | --- |
+| Workflow | Windows Batch |
+| System query | PowerShell, WMI/CIM, PnP cmdlets |
+| UI | Terminal dashboard |
+| Platform | Windows |
 
-## Safety / 안전 주의사항
+## Safety / 실행 주의
 
-- 스크립트 마지막에는 작업자 선택에 따라 `shutdown /r /fw /t 0` 명령으로 UEFI BIOS 재부팅을 실행할 수 있습니다.
-- 실제 장비에서 실행하기 전에 스크립트 내용을 확인해야 합니다.
-- 공개 저장소에는 비밀번호, API 토큰, 네트워크 공유 계정 정보, 운영 식별 문자열을 포함하지 않습니다.
+마지막 단계의 `shutdown /r /fw /t 0`은 사용자가 선택했을 때만 UEFI BIOS 재부팅을 실행합니다. 실제 장비에서 실행하기 전에 스크립트와 검수 순서를 확인해야 합니다.
 
-## License / 라이선스
+## License
 
-MIT License. 자세한 내용은 [LICENSE](LICENSE)를 참고하세요.
+MIT License
